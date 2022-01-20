@@ -58,7 +58,8 @@ class Address
 
     /**
      * @var int
-     *
+     * @ORM\OneToOne(targetEntity="Country")
+     * @ORM\JoinColumn(name="country_id", referencedColumnName="id")
      * @ORM\Column(name="country_id", type="integer", nullable=true)
      */
     private $countryId;
