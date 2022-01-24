@@ -2,6 +2,8 @@
 
 namespace AppBundle\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -11,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AddressRepository")
  */
 class Address
-{
+{   
     /**
      * @var int
      *
@@ -23,7 +25,8 @@ class Address
 
     /**
      * @var string
-     *
+     * 
+     * @Assert\NotBlank
      * @ORM\Column(name="firstname", type="string", length=255, nullable=true)
      */
     private $firstname;
@@ -57,12 +60,10 @@ class Address
     private $city;
 
     /**
-     * @var int
-     * @ORM\OneToOne(targetEntity="Country")
-     * @ORM\JoinColumn(name="country_id", referencedColumnName="id")
-     * @ORM\Column(name="country_id", type="integer", nullable=true)
+     * @var string
+     * @ORM\Column(name="country", type="string", length=2, nullable=true)
      */
-    private $countryId;
+    private $country;
 
     /**
      * @var string
@@ -87,7 +88,6 @@ class Address
 
     /**
      * @var string
-     *
      * @ORM\Column(name="picture", type="string", length=255, nullable=true)
      */
     private $picture;
@@ -224,27 +224,27 @@ class Address
     }
 
     /**
-     * Set countryId
+     * Set country
      *
-     * @param integer $countryId
+     * @param striing $country
      *
      * @return Address
      */
-    public function setCountryId($countryId)
+    public function setCountry($country)
     {
-        $this->countryId = $countryId;
+        $this->country = $country;
 
         return $this;
     }
 
     /**
-     * Get countryId
+     * Get country
      *
-     * @return int
+     * @return string
      */
-    public function getCountryId()
+    public function getCountry()
     {
-        return $this->countryId;
+        return $this->country;
     }
 
     /**
@@ -341,6 +341,16 @@ class Address
     public function getPicture()
     {
         return $this->picture;
+    }
+
+    /**
+     * Get picture url
+     *
+     * @return string
+     */
+    public function getPictureUrl()
+    {
+        return '/uploads/'.basename($this->picture);
     }
 }
 
