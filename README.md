@@ -1,77 +1,36 @@
-Symfony Standard Edition
-========================
+# Overview
 
-**WARNING**: This distribution does not support Symfony 4. See the
-[Installing & Setting up the Symfony Framework][15] page to find a replacement
-that fits you best.
+Requirement was to create an addressbook with CRUD options and an overview page.
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony
-application that you can use as the skeleton for your new applications.
+# Development Roadmap
 
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
+Since this is my first symfony application I set myself to learn about basic route management and twig templating. Once that is done I lookuped up how symfony managed form and how doctrine was querying the databse. While learning about doctrine, I figured out about entity and how schema was to be validated and updated. 
 
-What's inside?
---------------
+First thing I did was to updated the existing default controller and incorporated additional methods for create, edit, delete and view pages. Once the routes are there and linked with the controller method using annotations. I created the related view files and linked them through the controller method. 
 
-The Symfony Standard Edition is configured with the following defaults:
+Then, I started with creating the entity. Initially I was planning to create two entities country and address and have relationship setup between them. But then I figured symfony already has a CoutryType field, so I decided not to make to overly complicated as that my not be the objection of this job, rather to figure out if I am able to identity and use existing framework features.
 
-  * An AppBundle you can use to start coding;
+Once the forms are setup and working through doctrine, I set out to figure out how to setup file uploader. Initially it was done through a simple service class. But afterwards, I figuired I can use a doctrine event observers to automate the process and reduce code from the controller. So, I incorporated an observer for prePersist, preUpdate, and postLoad events.
 
-  * Twig as the only configured template engine;
+Now that my application was doing more of less what was required of it. I focused on the listing page. I figured there was no in-built bootstrap pagination or any sort of pagination support on symfony for doctrine. But there is a composer library called KnpPaginator which works quite well. So, I installed and implemented it on my address controllers indexAction and on the index twig template.
 
-  * Doctrine ORM/DBAL;
+As all the base requriements of the projects are done I set up to port all static texts into language files. So, first I configured it to use locale and then created the messages.en.yml file to store the entire application specific texts in English.
 
-  * Swiftmailer;
+Also, I have incorporated flash value based notification that shows up after create, update and delete event. 
 
-  * Annotations enabled for everything.
+Since, this is my first application in symfony, I implemented a basic smoke test initially to ensure the endpoints are working fine. Then went on the implement some functional test to check if the database is populated as expected.
 
-It comes pre-configured with the following bundles:
 
-  * **FrameworkBundle** - The core Symfony framework bundle
+# Setup
 
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
+To validate the schema
+> 
 
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
+To update the schema
+> 
 
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
+To start the symfony development server
+> ./bin/console server:start
 
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
-
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
-
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
-
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
-
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
-
-  * [**SensioGeneratorBundle**][13] (in dev env) - Adds code generation
-    capabilities
-
-  * [**WebServerBundle**][14] (in dev env) - Adds commands for running applications
-    using the PHP built-in web server
-
-  * **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
-    integration
-
-All libraries and bundles included in the Symfony Standard Edition are
-released under the MIT or BSD license.
-
-Enjoy!
-
-[1]:  https://symfony.com/doc/3.4/setup.html
-[6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  https://symfony.com/doc/3.4/doctrine.html
-[8]:  https://symfony.com/doc/3.4/templating.html
-[9]:  https://symfony.com/doc/3.4/security.html
-[10]: https://symfony.com/doc/3.4/email.html
-[11]: https://symfony.com/doc/3.4/logging.html
-[13]: https://symfony.com/doc/current/bundles/SensioGeneratorBundle/index.html
-[14]: https://symfony.com/doc/current/setup/built_in_web_server.html
-[15]: https://symfony.com/doc/current/setup.html
+To stop the symfony development server
+> ./bin/console server:stop
