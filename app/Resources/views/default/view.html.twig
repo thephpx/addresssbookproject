@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="row mt-5">
+		<div class="col-md-12">
+			<h3>{% trans %}heading.view{% endtrans %}</h3><hr>
+			<table class="table table-bordered">
+				<tr>
+					<th width="15%">{% trans %}label.first.name{% endtrans %}</th>
+					<td width="35%">{{ row.firstname }}</td>
+					<th width="15%">{% trans %}label.last.name{% endtrans %}</th>
+					<td width="35%">{{ row.lastname }}</td>
+				</tr>
+				<tr>
+					<th width="15%">{% trans %}label.dob{% endtrans %}</th>
+					<td width="35%">{{ row.dob|date("m/d/Y") }}</td>
+					<th width="15%">{% trans %}label.picture{% endtrans %}</th>
+					<td width="35%" class="text-center">								
+					{% if row.getPictureUrl() is not null %}
+						<img class="my-3 rounded" style="border: 1px solid #c4c4c4" src="{{ asset(row.getPictureUrl()) }}" alt="" width="150" class="img-fluid" />
+					{% endif %}	
+					</td>
+				</tr>
+				<tr>
+					<th width="15%">{% trans %}label.email{% endtrans %}</th>
+					<td>{{ row.email }}</td>
+					<th width="15%">{% trans %}label.phonenumber{% endtrans %}</th>
+					<td>{{ row.phonenumber }}</td>
+				</tr>
+				<tr>
+					<th>{% trans %}label.streetaddress{% endtrans %}</th>
+					<td>{{ row.streetAddress }}</td>
+					<th width="15%">{% trans %}label.city{% endtrans %}</th>
+					<td>{{ row.city }}</td>
+				</tr>
+				<tr>
+					<th width="15%">{% trans %}label.country{% endtrans %}</th>
+					<td>{{ row.country }}</td>
+					<th width="15%">{% trans %}label.zip{% endtrans %}</th>
+					<td>{{ row.zip }}</td>
+				</tr>
+			</table>
+			<div>
+				<a href="{{path('listAddress')}}" class="btn btn-secondary">Go Back</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+<div class="col-12 mt-3">
+	{% for alert_message in app.flashes('alert_messages') %}
+		{% set alert = alert_message|split('|') %}
+		<div class="alert alert-{{alert[0]}} alert-dismissible fade show" role="alert">
+		  {{alert[1]}}
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		    <span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+	{% endfor %}
+</div>

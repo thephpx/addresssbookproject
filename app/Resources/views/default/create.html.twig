@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="row mt-5">
+		<div class="col-md-12">
+			<h3>{% trans %}heading.create{% endtrans %}</h3><hr>
+		</div>
+		<div class="col-md-4">			
+			{{ form_start(form) }}
+			{{ form_widget(form) }}
+			{{ form_end(form) }}
+		</div>
+	</div>
+{% endblock %}

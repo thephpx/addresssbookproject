@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="row mt-5">
+		<div class="col-md-12">
+			<h3>{% trans %}heading.delete{% endtrans %}</h3><hr>
+		    <p>{% trans %}heading.delete.message{% endtrans %}</p>		    	    
+		</div>
+		<div class="col-12">		
+			{{ form_start(form) }}
+			{{ form_widget(form) }}
+			<div>
+				<div class="row">
+					<div class="col-4">				
+						<table class="table table-bordered">
+							<tr>
+								<th width="25%">{% trans %}th.first.name{% endtrans %}:</th>
+								<td>{{form.vars.value.firstname}}</td>
+							</tr>
+							<tr>
+								<th width="25%">{% trans %}th.last.name{% endtrans %}:</th>
+								<td>{{form.vars.value.lastname}}</td>
+							</tr>
+							<tr>
+								<th width="25%">{% trans %}th.email{% endtrans %}:</th>
+								<td>{{form.vars.value.email}}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<button type="submit" class="btn btn-danger">Confirm</button>
+				<a href="{{ path('listAddress') }}" class="btn btn-secondary">Cancel</a>
+			</div>	
+			{{ form_end(form) }}	
+		</div>
+	</div>
+{% endblock %}

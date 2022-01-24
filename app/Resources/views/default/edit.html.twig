@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="row mt-5">
+		<div class="col-md-12">
+			<h3>{% trans %}heading.edit{% endtrans %}</h3><hr>
+		</div>
+		<div class="col-md-4">		
+			{% if address.getPictureUrl() is not null %}
+				<img class="my-3 rounded" style="border: 1px solid #c4c4c4" src="{{ asset(address.getPictureUrl()) }}" alt="" width="150" class="img-fluid" />
+			{% endif %}	
+			{{ form_start(form) }}
+			{{ form_widget(form) }}
+			{{ form_end(form) }}
+		</div>
+	</div>
+{% endblock %}
