@@ -17,5 +17,3 @@
 /web/bundles/
 /web/upload/*
 !/var/data
-/var/data/database.sqlite
-/var/data/database_test.sqlite
