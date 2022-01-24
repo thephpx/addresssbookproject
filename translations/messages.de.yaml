@@ -1,0 +1,28 @@
+nav.main: 'Adressbuch'
+nav.home: 'Zuhause'
+nav.home.sr: '(aktuell)'
+label.first.name: 'Vorname:'
+label.last.name: 'Nachname:'
+label.email: 'E-Mail:'
+label.phonenumber: 'Telefonnummer:'
+label.streetaddress: 'Straßenadresse:'
+label.zip: 'Postleitzahl:'
+label.city: 'Stadt:'
+label.country: 'Land:'
+label.dob: 'Geburtstag:'
+label.picture: 'Bild:'
+label.save: Speichern
+th.first.name: 'Vorname'
+th.last.name: 'Nachname'
+th.email: E-Mail
+th.phonenumber: 'Telefonnummer'
+th.dob: Geburtstag
+th.actions: Aktionen
+heading.list: 'Alle Adressen'
+heading.create: 'Neue Adresse erstellen'
+heading.edit: 'Adresse aktualisieren'
+heading.delete: 'Adresslöschung bestätigen'
+heading.delete.message: 'Sind Sie sicher, dass Sie diese Adresse aus dem Datensatz entfernen möchten?'
+heading.view: 'Adressdetails'
+btn.search: 'Suchen'
+placeholder.search: 'Suchen...' 
