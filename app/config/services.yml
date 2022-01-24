@@ -29,6 +29,16 @@ services:
         public: true
         tags: ['controller.service_arguments']
 
+    AppBundle\Service\Uploader:
+        arguments:
+            $targetDirectory: '%uploads_directory%'
+
+    AppBundle\EventListener\UploadListener:
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }
+            - { name: doctrine.event_listener, event: postLoad }
+
     # add more services, or override services that need manual wiring
     # AppBundle\Service\ExampleService:
     #     arguments:

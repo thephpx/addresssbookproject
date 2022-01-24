@@ -3,18 +3,55 @@
 {% block body %}
 	<div class="row mt-5">
 		<div class="col-md-12">
-			<h3>Address List</h3><hr>
+			<h3>{% trans %}heading.list{% endtrans %}</h3><hr>
+		</div>
+		<div class="my-2 col-md-3">
+			<form class="form-inline" method="get">
+			<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+				<div class="form-group mx-sm-3">
+					<input type="text" name="search" class="form-control" placeholder="{% trans %}placeholder.search{% endtrans %}" value="{{search_query}}" />
+				</div>
+				<button class="btn btn-primary">{% trans %}btn.search{% endtrans %}</button>
+				<a href="{{ path('listAddress') }}" class="mx-2 btn btn-secondary">Reset</a>
+			</form>
+		</div>
+		<div class="my-2 col-md-9 text-right">
+			<a href="{{path('createAddress')}}" class="btn btn-success">Create</a>
+		</div>
+		<div class="col-md-12">
 		    <table class="table table-bordered">
 		    	<thead>
 		    		<tr>
-		    			
+		    			<th class="text-center">#</th>
+		    			<th class="text-center">{% trans %}th.first.name{% endtrans %}</th>
+		    			<th class="text-center">{% trans %}th.last.name{% endtrans %}</th>
+		    			<th class="text-center">{% trans %}th.email{% endtrans %}</th>
+		    			<th class="text-center">{% trans %}th.phonenumber{% endtrans %}</th>
+		    			<th class="text-center">{% trans %}th.dob{% endtrans %}</th>
+		    			<th class="text-center">{% trans %}th.actions{% endtrans %}</th>
 		    		</tr>
 		    	</thead>
+		    	<tbody>
+		    		{% for row in rows %}
+	    			<tr>
+	    				<td class="text-center">{{row.id}}</td>
+	    				<td class="text-center">{{row.firstname}}</td>
+	    				<td class="text-center">{{row.lastname}}</td>
+	    				<td class="text-center">{{row.email}}</td>
+	    				<td class="text-center">{{row.phonenumber}}</td>
+	    				<td class="text-center">{{row.dob|date("m/d/Y")}}</td>
+	    				<td class="text-center">
+	    					<a href="{{path('editAddress', {'addressId':row.id})}}" class="btn btn-secondary">Edit</a>
+	    					<a href="{{path('deleteAddress', {'addressId':row.id})}}" class="btn btn-danger">Delete</a>
+	    					<a href="{{path('viewAddress', {'addressId':row.id})}}" class="btn btn-info">View</a>
+	    				</td>
+	    			</tr>
+		    		{% endfor %}
+		    	</tbody>
 		    </table>	
 		</div>
 	</div>
-{% endblock %}
-
-{% block stylesheets %}
-
+	<div class="navigation text-center">
+    	{{ knp_pagination_render(rows) }}
+	</div>
 {% endblock %}
