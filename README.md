@@ -21,16 +21,36 @@ Also, I have incorporated flash value based notification that shows up after cre
 Since, this is my first application in symfony, I implemented a basic smoke test initially to ensure the endpoints are working fine. Then went on the implement some functional test to check if the database is populated as expected.
 
 
+# Highlights
+
+- Implemented bootstrap 4 responsive css library in twig template
+- Controllers with annotated routes setup
+- Entity doctrine model implemented
+- Twig template setup with view partial being imported for navigation and notification
+- Uploader service class implemented
+- Doctrine event listener service setup
+- External pagination library setup
+
+
 # Setup
 
+To create the database
+> php bin/console doctrine:database:create
+
+To drop the database
+> php bin/console doctrine:database:drop --force
+
 To validate the schema
-> 
+> php bin/console doctrine:schema:validate
 
 To update the schema
-> 
+> php bin/console doctrine:schema:update --force
 
 To start the symfony development server
 > ./bin/console server:start
 
 To stop the symfony development server
 > ./bin/console server:stop
+
+To run the phpunit tests
+> ./vendor/bin/phpunit
