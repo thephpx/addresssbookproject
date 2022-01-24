@@ -14,3 +14,13 @@ web_profiler:
 
 swiftmailer:
     disable_delivery: true
+
+doctrine:
+    dbal:
+        default_connection: default
+        connections:
+            default:
+                driver: pdo_sqlite
+                #memory: true
+                path: '%kernel.project_dir%/var/data/database_test.sqlite'
+                charset: UTF8
